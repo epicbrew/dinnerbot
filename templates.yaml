@@ -1,3 +1,5 @@
 welcome: Welcome to dinner bot, say start for dinner suggestions.
 
 suggestion: How about {{ dinner }}?
+
+enjoy: Enjoy your {{ dinner }}.

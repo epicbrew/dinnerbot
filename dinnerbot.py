@@ -29,7 +29,7 @@ def dinnerbot_launch():
     return question(welcome_msg)
 
 @ask.intent("StartIntent")
-def next_round():
+def start_suggesting():
     try:
         dinner = session.attributes['dinners'].pop()
     except IndexError:
@@ -39,6 +39,21 @@ def next_round():
 
     return question(suggestion_msg)
 
+@ask.intent("NoIntent")
+def next_suggestion():
+    try:
+        dinner = session.attributes['dinners'].pop()
+    except IndexError:
+        return statement("I'm out of ideas.")
+
+    suggestion_msg = render_template('suggestion', dinner=dinner)
+
+    return question(suggestion_msg)
+
+@ask.intent("YesIntent")
+def finish():
+    enjoy_msg = render_template('enjoy', dinner=dinner)
+    return statement(enjoy_msg)
 
 if __name__ == '__main__':
     app.run(debug=True)
