@@ -20,6 +20,10 @@ test_data = [
   'steak',
 ]
 
+@app.route('/')
+def index():
+    return "dinnerbot"
+
 @ask.launch
 def dinnerbot_launch():
     welcome_msg = render_template('welcome')
