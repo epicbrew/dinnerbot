@@ -5,8 +5,8 @@ from flask_ask import Ask, statement, question, session
 
 logging.getLogger("flask_ask").setLevel(logging.DEBUG)
 
-app = Flask(__name__)
-ask = Ask(app, '/dinnerbot')
+application = Flask(__name__)
+ask = Ask(application, '/dinnerbot')
 
 test_data = [
   'spaghetti and meatballs',
@@ -20,7 +20,7 @@ test_data = [
   'steak',
 ]
 
-@app.route('/')
+@application.route('/')
 def index():
     return "dinnerbot"
 
@@ -75,5 +75,5 @@ def finish():
     return statement(enjoy_msg)
 
 if __name__ == '__main__':
-    # app.run(debug=True, host='0.0.0.0')
-    app.run(debug=True)
+    # application.run(debug=True, host='0.0.0.0')
+    application.run(debug=True)
